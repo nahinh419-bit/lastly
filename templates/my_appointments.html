@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}My Appointments{% endblock %}
+{% block content %}
+
+<div class="sub-header">
+    <a href="{{ url_for('home') }}">‹</a>
+    <h2>My Appointments</h2>
+</div>
+
+{% if appointment %}
+<div class="appointment-card">
+    <span class="status">Confirmed</span>
+    <h2>{{ appointment.doctor }}</h2>
+    <p>Patient: {{ appointment.patient }}</p>
+    <p>📅 {{ appointment.date }}</p>
+    <p>◷ {{ appointment.time }}</p>
+</div>
+{% else %}
+<div class="empty">
+    <div class="empty-icon">▢</div>
+    <h2>No appointments yet</h2>
+    <p>Your booked appointments will appear here.</p>
+    <a class="primary-btn" href="{{ url_for('home') }}">Find a Doctor</a>
+</div>
+{% endif %}
+
+{% endblock %}

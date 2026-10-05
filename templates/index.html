@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}HospiHelp - Home{% endblock %}
+{% block content %}
+
+<section class="hero">
+    <div>
+        <p class="eyebrow">WELCOME TO HOSPIHELP</p>
+        <h1>Your Health<br><span>Our Priority</span></h1>
+        <p class="hero-text">Find the right doctor, nearby hospitals and the care you need — easily.</p>
+    </div>
+    <div class="hero-icon">⚕</div>
+</section>
+
+<section class="card location-card">
+    <div class="section-title">
+        <div>
+            <span class="mini-label">LOCATION</span>
+            <h2>Where do you live?</h2>
+        </div>
+        <span class="pin">⌖</span>
+    </div>
+
+    <div class="select-grid">
+        <select><option>Select Division</option><option>Dhaka Division</option><option>Rajshahi Division</option></select>
+        <select><option>Select District</option><option>Dhaka</option><option>Rajshahi</option></select>
+        <select><option>Select Area</option><option>Motijheel</option><option>Dhanmondi</option></select>
+    </div>
+
+    <form action="{{ url_for('find_specialist') }}" method="POST">
+        <label class="input-label">What symptom or problem do you have?</label>
+        <textarea name="symptom" placeholder="e.g. chest pain, fever, skin rash..." required></textarea>
+        <button class="primary-btn" type="submit">⌕ &nbsp; Find Specialist</button>
+    </form>
+</section>
+
+<section class="section-head">
+    <h2>Nearby Hospitals</h2>
+    <a href="{{ url_for('hospitals') }}">View All</a>
+</section>
+
+<div class="hospital-preview">
+{% for hospital in hospitals[:2] %}
+    <div class="hospital-card">
+        <div class="hospital-img">🏥</div>
+        <div>
+            <h3>{{ hospital.name }}</h3>
+            <p>⌖ {{ hospital.location }}</p>
+            <small>{{ hospital.distance }}</small>
+        </div>
+        <b>›</b>
+    </div>
+{% endfor %}
+</div>
+
+<section class="section-head">
+    <h2>Recommended Specialists</h2>
+    <a href="{{ url_for('find_specialist') }}">View All</a>
+</section>
+
+{% for doctor in doctors %}
+<div class="doctor-mini">
+    <img src="{{ doctor.image }}" alt="Doctor">
+    <div>
+        <h3>{{ doctor.name }}</h3>
+        <p>{{ doctor.specialization }}</p>
+        <span>★ {{ doctor.rating }} ({{ doctor.reviews }} reviews)</span>
+    </div>
+    <a href="{{ url_for('doctor', doctor_id=doctor.id) }}">›</a>
+</div>
+{% endfor %}
+
+{% endblock %}

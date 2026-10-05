@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Menu{% endblock %}
+{% block content %}
+<div class="menu-page">
+    <h1>More</h1>
+    <a href="{{ url_for('blood_finder') }}">🩸 Blood Finder</a>
+    <a href="{{ url_for('hospitals') }}">🏥 Hospital Locator</a>
+    <a href="{{ url_for('my_appointments') }}">📅 My Appointments</a>
+    <a href="{{ url_for('login') }}">⚙ Settings / Login</a>
+</div>
+{% endblock %}

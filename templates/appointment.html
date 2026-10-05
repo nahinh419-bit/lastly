@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Book Appointment{% endblock %}
+{% block content %}
+
+<div class="sub-header">
+    <a href="{{ url_for('doctor', doctor_id=doctor.id) }}">‹</a>
+    <h2>Book Appointment</h2>
+</div>
+
+<div class="appointment-doctor">
+    <img src="{{ doctor.image }}" alt="Doctor">
+    <div>
+        <h2>{{ doctor.name }}</h2>
+        <p>{{ doctor.specialization }}</p>
+        <small>⌖ {{ doctor.hospital }}</small>
+    </div>
+</div>
+
+<form class="form-card" method="POST">
+    <label>Your Name</label>
+    <input name="patient" placeholder="Enter your name" required>
+
+    <label>Select Date</label>
+    <input name="date" type="date" required>
+
+    <label>Select Time</label>
+    <select name="time" required>
+        <option value="">Choose a time</option>
+        <option>09:00 AM</option><option>10:00 AM</option><option>11:00 AM</option>
+        <option>02:00 PM</option><option>03:00 PM</option><option>04:00 PM</option>
+    </select>
+
+    <button class="primary-btn" type="submit">Confirm Appointment</button>
+</form>
+
+{% endblock %}

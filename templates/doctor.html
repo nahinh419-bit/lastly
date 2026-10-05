@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}{{ doctor.name }}{% endblock %}
+{% block content %}
+
+<div class="sub-header">
+    <a href="{{ url_for('home') }}">‹</a>
+    <h2>Doctor Profile</h2>
+    <span>♡</span>
+</div>
+
+<div class="profile-cover">
+    <img src="{{ doctor.image }}" alt="Doctor">
+</div>
+
+<div class="profile-content">
+    <div class="profile-title">
+        <div>
+            <h1>{{ doctor.name }}</h1>
+            <p>{{ doctor.specialization }}</p>
+        </div>
+        <span class="badge">Recommended</span>
+    </div>
+
+    <div class="rating big">★ {{ doctor.rating }} <span>({{ doctor.reviews }} reviews)</span></div>
+
+    <div class="facts">
+        <span>◷<b>{{ doctor.experience }}</b>Experience</span>
+        <span>▣<b>{{ doctor.hospital }}</b>Hospital</span>
+        <span>⌖<b>{{ doctor.location }}</b>Location</span>
+    </div>
+
+    <hr>
+    <h2>About</h2>
+    <p class="about">Experienced {{ doctor.specialization.lower() }} focused on patient-centered care and clear treatment guidance.</p>
+
+    <h2>Available Time</h2>
+    <div class="days">
+        <button class="selected">Mon</button><button>Tue</button><button>Wed</button><button>Thu</button><button>Fri</button>
+    </div>
+
+    <div class="times">
+        <span>09:00 AM</span><span>10:00 AM</span><span>11:00 AM</span>
+        <span>02:00 PM</span><span>03:00 PM</span><span>04:00 PM</span>
+    </div>
+
+    <a class="primary-btn" href="{{ url_for('appointment', doctor_id=doctor.id) }}">▣ &nbsp; Book Appointment</a>
+</div>
+
+{% endblock %}

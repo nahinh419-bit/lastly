@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Specialist Recommendation{% endblock %}
+{% block content %}
+
+<div class="sub-header">
+    <a href="{{ url_for('home') }}">‹</a>
+    <h2>Specialist Recommendation</h2>
+</div>
+
+<div class="recommendation">
+    <div class="recommend-icon">✦</div>
+    <div>
+        <small>BASED ON YOUR SYMPTOMS</small>
+        <p>You may need to consult a</p>
+        <strong>{{ specialist }}</strong>
+    </div>
+</div>
+
+<div class="section-head">
+    <h2>Recommended Doctors</h2>
+    <span>☷</span>
+</div>
+
+{% for doctor in doctors %}
+<div class="doctor-card">
+    <img src="{{ doctor.image }}" alt="Doctor">
+    <div class="doctor-info">
+        <div class="doctor-top">
+            <h3>{{ doctor.name }}</h3>
+            <span class="badge">Recommended</span>
+        </div>
+        <p>{{ doctor.specialization }}</p>
+        <div class="rating">★ {{ doctor.rating }} <span>({{ doctor.reviews }} reviews)</span></div>
+        <small>⌖ {{ doctor.hospital }}</small>
+        <small>⌖ {{ doctor.distance }}</small>
+        <a class="primary-btn small-btn" href="{{ url_for('appointment', doctor_id=doctor.id) }}">Book Appointment</a>
+    </div>
+</div>
+{% else %}
+<div class="empty">No specialist found.</div>
+{% endfor %}
+
+{% endblock %}

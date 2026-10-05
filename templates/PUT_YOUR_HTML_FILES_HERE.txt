@@ -1,0 +1,1 @@
+Copy your own HTML templates here (delete this file afterwards).

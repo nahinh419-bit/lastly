@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Hospital Locator{% endblock %}
+{% block content %}
+
+<div class="sub-header">
+    <a href="{{ url_for('home') }}">‹</a>
+    <h2>Nearby Hospitals</h2>
+</div>
+
+<div class="search-box">⌕ <input placeholder="Search hospitals..."></div>
+
+{% for hospital in hospitals %}
+<div class="hospital-list-card">
+    <div class="hospital-img large">🏥</div>
+    <div class="hospital-info">
+        <h3>{{ hospital.name }}</h3>
+        <p>⌖ {{ hospital.location }}</p>
+        <p>⌖ {{ hospital.distance }}</p>
+        <span class="type-badge">{{ hospital.type }}</span>
+    </div>
+    <b>›</b>
+</div>
+{% endfor %}
+
+<div class="map-button">⌖ &nbsp; View Hospitals Near Me</div>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Blood Finder{% endblock %}
+{% block content %}
+
+<div class="sub-header">
+    <a href="{{ url_for('home') }}">‹</a>
+    <h2>Blood Finder</h2>
+</div>
+
+<div class="blood-hero">
+    <div class="blood-drop">♥</div>
+    <h1>Find Blood When You Need It</h1>
+    <p>Search nearby blood donors, blood banks and donation centers.</p>
+</div>
+
+<div class="form-card">
+    <label>Blood Group</label>
+    <select>
+        <option>Select Blood Group</option>
+        <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+        <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+    </select>
+
+    <label>Location</label>
+    <input placeholder="Dhaka / your area">
+
+    <button class="primary-btn">Find Blood</button>
+</div>
+
+<div class="blood-info">
+    <h2>Emergency</h2>
+    <p>For a medical emergency, contact a nearby hospital or emergency service immediately.</p>
+</div>
+
+{% endblock %}
